@@ -1,0 +1,16 @@
+---
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html
+# https://docs.ansible.com/ansible/latest/collections/community/general/pacman_module.html
+
+- name: "pacman -S doas"
+  community.general.pacman:
+    name: doas
+    state: present
+
+- name: "copy doas.conf"
+  ansible.builtin.copy:
+    src: files/doas.conf
+    dest: /etc/doas.conf
+    owner: root
+    group: root
+    mode: "0600"
